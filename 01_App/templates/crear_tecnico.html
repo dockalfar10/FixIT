@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Nuevo técnico · FixIT{% endblock %}
+{% block content %}
+<div class="form-card">
+    <p class="eyebrow">Catálogo</p>
+    <h1>Registrar técnico</h1>
+    <form method="post">
+        <label>Nombre *
+            <input name="nombre" required>
+        </label>
+        <label>Teléfono
+            <input name="telefono">
+        </label>
+        <label>Correo electrónico
+            <input name="email" type="email">
+        </label>
+        <button class="button primary" type="submit">Guardar técnico</button>
+    </form>
+</div>
+{% endblock %}

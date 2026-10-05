@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Nueva solicitud · FixIT{% endblock %}
+{% block content %}
+<div class="form-card wide">
+    <p class="eyebrow">Soporte</p>
+    <h1>Crear solicitud</h1>
+    {% if not clientes or not equipos %}
+        <div class="notice">
+            Para crear una solicitud necesitas al menos un cliente y un equipo asociado.
+        </div>
+    {% endif %}
+    <form method="post">
+        <label>Cliente *
+            <select name="cliente_id" required>
+                <option value="">Selecciona un cliente</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">{{ cliente.nombre }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>Equipo *
+            <select name="equipo_id" required>
+                <option value="">Selecciona un equipo</option>
+                {% for equipo in equipos %}
+                    <option value="{{ equipo.id }}">
+                        #{{ equipo.id }} · {{ equipo.cliente_nombre }} · {{ equipo.tipo }} — {{ equipo.descripcion }}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>Descripción del problema *
+            <textarea name="descripcion" rows="6" required></textarea>
+        </label>
+
+        <button class="button primary" type="submit" {% if not clientes or not equipos %}disabled{% endif %}>
+            Crear solicitud
+        </button>
+    </form>
+</div>
+{% endblock %}

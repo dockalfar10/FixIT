@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Inicio · FixIT{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Mesa de soporte técnico</p>
+        <h1>Gestiona solicitudes de soporte de principio a fin.</h1>
+        <p class="lead">
+            Registra clientes, equipos y técnicos; crea solicitudes, asígnalas,
+            cambia su estado y consulta las solicitudes abiertas.
+        </p>
+        <div class="actions">
+            <a class="button primary" href="{{ url_for('main.nueva_solicitud') }}">Crear solicitud</a>
+            <a class="button" href="{{ url_for('main.solicitudes') }}">Ver solicitudes abiertas</a>
+        </div>
+    </div>
+</section>
+
+<section class="grid three">
+    <article class="card">
+        <h2>Clientes</h2>
+        <p>Registra los datos básicos de las personas que solicitan soporte.</p>
+        <a href="{{ url_for('main.nuevo_cliente') }}">Registrar cliente →</a>
+    </article>
+    <article class="card">
+        <h2>Equipos</h2>
+        <p>Asocia equipos a sus clientes para mantener la relación de soporte.</p>
+        <a href="{{ url_for('main.nuevo_equipo') }}">Registrar equipo →</a>
+    </article>
+    <article class="card">
+        <h2>Técnicos</h2>
+        <p>Registra responsables para poder asignar solicitudes.</p>
+        <a href="{{ url_for('main.nuevo_tecnico') }}">Registrar técnico →</a>
+    </article>
+</section>
+{% endblock %}
