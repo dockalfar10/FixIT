@@ -1,0 +1,4 @@
+# Dependencias de FixIT. Permiten reproducir el entorno de ejecucion y de pruebas
+# desde cualquier linea base: pip install -r requirements.txt
+Flask==3.0.3
+pytest==8.4.2

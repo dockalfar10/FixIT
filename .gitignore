@@ -1,0 +1,24 @@
+# Cache de bytecode de Python. Nunca debe versionarse: es un artefacto derivado,
+# atado a la version exacta del interprete. Su ausencia en el .gitignore original
+# fue la causa de que el codigo fuente del proyecto no quedara bajo control.
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Base de datos local de desarrollo (no es un elemento de configuracion)
+*.sqlite3
+*.db
+
+# Artefactos de pruebas
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Configuracion local del IDE
+.idea/
+.vscode/
