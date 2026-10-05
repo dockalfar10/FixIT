@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Nuevo equipo · FixIT{% endblock %}
+{% block content %}
+<div class="form-card">
+    <p class="eyebrow">Catálogo</p>
+    <h1>Registrar equipo</h1>
+    {% if not clientes %}
+        <div class="notice">Primero debes registrar al menos un cliente.</div>
+    {% endif %}
+    <form method="post">
+        <label>Cliente *
+            <select name="cliente_id" required>
+                <option value="">Selecciona un cliente</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">{{ cliente.nombre }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Tipo *
+            <input name="tipo" placeholder="Portátil, PC, impresora..." required>
+        </label>
+        <label>Descripción
+            <input name="descripcion">
+        </label>
+        <button class="button primary" type="submit" {% if not clientes %}disabled{% endif %}>Guardar equipo</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Solicitudes abiertas · FixIT{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Operación</p>
+        <h1>Solicitudes abiertas</h1>
+        <p class="muted">Casos que todavía no están cerrados.</p>
+    </div>
+    <a class="button primary" href="{{ url_for('main.nueva_solicitud') }}">Nueva solicitud</a>
+</div>
+
+{% if solicitudes %}
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Equipo</th>
+            <th>Estado</th>
+            <th>Creación</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for s in solicitudes %}
+        <tr>
+            <td>#{{ s.id }}</td>
+            <td>{{ s.cliente_nombre }}</td>
+            <td>{{ s.equipo_tipo }} — {{ s.equipo_descripcion }}</td>
+            <td><span class="status">{{ s.estado }}</span></td>
+            <td>{{ s.fecha_creacion }}</td>
+            <td><a href="{{ url_for('main.detalle_solicitud', solicitud_id=s.id) }}">Ver detalle</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% else %}
+<div class="empty card">
+    <h2>No hay solicitudes abiertas</h2>
+    <p>Cuando se cree una solicitud aparecerá en esta lista.</p>
+    <a class="button primary" href="{{ url_for('main.nueva_solicitud') }}">Crear solicitud</a>
+</div>
+{% endif %}
+{% endblock %}
